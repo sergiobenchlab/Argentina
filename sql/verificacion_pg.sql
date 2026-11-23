@@ -33,9 +33,9 @@ FROM argentina.universidades;
 
 -- 5. Segmentos: 772 filas, 4 por universidad, y la llave contra clusters.
 SELECT COUNT(*) AS filas, COUNT(DISTINCT id_universidad) AS ies,
-       COUNT(*) FILTER (WHERE c.cluster_ordn IS NULL) AS sin_cluster
+       COUNT(*) FILTER (WHERE c.ordn IS NULL) AS sin_cluster
 FROM argentina.universidad_segmento s
-LEFT JOIN argentina.clusters c ON c.cluster_ordn = s.cluster_ordn;
+LEFT JOIN argentina.clusters c ON c.ordn = s.cluster_ordn;
 
 -- 6. ¿digital_marketing ya trae Argentina? (decide marketing, edutrends y mercados adyacentes)
 SELECT table_name, column_name FROM information_schema.columns
