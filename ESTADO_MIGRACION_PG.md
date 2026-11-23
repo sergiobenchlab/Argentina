@@ -4,6 +4,20 @@ Revisión hecha leyendo directamente los 17 `.pbix` de `Downloads/INFORMES ARGEN
 DAX, relaciones y datos guardados en cada modelo) y comparándolos con los exports de PG del 23/11.
 Ningún `.pbix` fue modificado.
 
+## 0. Avance de la migración (23/11, tarde)
+
+| Tablero | Estado | Verificación |
+|---|---|---|
+| `arg_poblaciones` | ✅ 100 % PG (banderas repuntadas a `population.m_banderas_m`) | 7/7 consultas PG, 83 medidas, 6 relaciones, controles 2023 OK |
+| `arg_perfil_ies` | ✅ 100 % PG (patrón A, 7 consultas PG + 4 embebidas) | 33 medidas sin cambios, 11 relaciones iguales, controles 2023 OK, todas las llaves resuelven |
+| `arg_marketing` | ⏸ En espera | Hay un modelo de marketing en curso a cargo de otra persona. El archivo copiado aún tiene el host mal escrito en `M - Banderas` |
+
+Decisión de producto: **"Cantidad de programas" = títulos distintos con matriculados > 0** (2023: 5.703; antes 9.242
+con el catálogo viejo). Se descartó contar ofertas IES × título (9.705).
+
+Ojo al repuntar: Power BI puede cambiar la dirección de filtro de `T - Población[ID_PRGRM] → M - Programa` de
+**Ambas** a **Única** al recargar. Hay que revisarla y devolverla a Ambas.
+
 ## 1. Resumen
 
 | | Tableros |
